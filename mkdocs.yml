@@ -1,4 +1,4 @@
-site_name: '飞牛测试'
+site_name: 'mkdoc'
 theme:
   name: material
   font:
