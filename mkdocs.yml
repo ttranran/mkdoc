@@ -1,5 +1,5 @@
 site_name: 'mkdoc'
-theme:
-  name: material
-  font:
-    code: Roboto Mono
+# theme:
+#   name: material
+#   font:
+#     code: Roboto Mono
