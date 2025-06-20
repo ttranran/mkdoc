@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Cron shutdown - mkdoc</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">mkdoc</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Hello ranran</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./" class="nav-link active" aria-current="page">Cron shutdown</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../docker%20ufw%E4%BF%AE%E6%94%B9/" class="nav-link">Docker ufw修改</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../immich%E5%AE%89%E8%A3%85/" class="nav-link">Immich安装</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../xinjePLC%E5%81%9C%E6%AD%A2%E4%B8%8E%E5%90%AF%E5%8A%A8%E6%8C%87%E4%BB%A4/" class="nav-link">xinjePLC停止与启动指令</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../%E4%BB%A3%E7%90%86/" class="nav-link">代理设置</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../%E5%8E%8B%E7%BC%A9%E8%A7%A3%E5%8E%8B%E7%BC%A9/" class="nav-link">压缩解压缩</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../%E5%BC%80%E6%9C%BA%E9%87%8D%E5%90%AF%E9%9D%A2%E6%9D%BF/" class="nav-link">开机重启面板</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../%E6%8C%82%E8%BD%BD%E5%91%BD%E4%BB%A4/" class="nav-link">挂载命令</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href=".." class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../docker%20ufw%E4%BF%AE%E6%94%B9/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            
+            
+            
+            
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<p>要使用 <code>cron</code> 设置定时关机，可以按照以下步骤进行：</p>
+<h3 id="1-crontab">1. 编辑 <code>crontab</code></h3>
+<p>在终端中输入以下命令来编辑当前用户的 <code>crontab</code> 文件：</p>
+<pre><code class="language-bash">crontab -e
+</code></pre>
+<h3 id="2">2. 添加关机任务</h3>
+<p>在打开的编辑器中，添加一行来设置定时关机。例如，如果你想每天晚上 10 点关机，可以添加以下行：</p>
+<p>复制</p>
+<pre><code>0 22 * * * /sbin/shutdown now
+</code></pre>
+<p>这行的意思是：</p>
+<ul>
+<li><code>0</code>：分钟（0 分钟）</li>
+<li><code>22</code>：小时（晚上 10 点）</li>
+<li><code>* * *</code>：每天、每月、每周的任意日期</li>
+</ul>
+<h3 id="3">3. 保存并退出</h3>
+<p>根据你使用的编辑器，保存并退出：</p>
+<ul>
+<li>如果是 <code>nano</code>，按 <code>Ctrl + X</code>，然后按 <code>Y</code> 确认保存。</li>
+<li>如果是 <code>vim</code>，输入 <code>:wq</code> 然后按 <code>Enter</code>。</li>
+</ul>
+<h3 id="4">4. 确认任务已添加</h3>
+<p>你可以使用以下命令查看当前的 <code>crontab</code> 任务：</p>
+<pre><code class="language-bash">crontab -l
+</code></pre>
+<p>确保你刚刚添加的关机任务在列表中。</p>
+<h3 id="5">5. 注意事项</h3>
+<ul>
+<li>确保你的系统时间设置正确。</li>
+<li>如果你需要取消定时关机，可以再次运行 <code>crontab -e</code> 并删除或注释掉该行（在行前加 <code>#</code>）。</li>
+</ul>
+<p>这样设置后，系统会在每天晚上 10 点自动关机。</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
